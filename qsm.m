@@ -22,18 +22,23 @@ function qsm(type, path_mag, path_ph, path_out, opts)
     if ~ exist('options','var') || isempty(options)
         options = [];
     end
+
+    % Check that type exists.
+    if ~ type 
+        error("No QSM method was given");
+    end
     
     % Running methods for Siemens 3T
     if type == "qsm_r2s_prisma" && exist('qsm_r2s_prisma', 'file')
-        qsm_r2s_prisma(path_mag, path_ph, path_out, options)
+        qsm_r2s_prisma(path_mag, path_ph, path_out, options);
     elseif type == "qsm_swi_prisma" && exist('qsm_swi_prisma', 'file')
-        qsm_swi_prisma(path_mag, path_ph, path_out, options)
+        qsm_swi_prisma(path_mag, path_ph, path_out, options);
     elseif type == "qsm_hemo_prisma" && exist('qsm_hemo_prisma', 'file')
-        qsm_hemo_prisma(path_mag, path_ph, path_out, options)
+        qsm_hemo_prisma(path_mag, path_ph, path_out, options);
     elseif type == "qsm_hemo_prisma" && exist('qsm_epi_prisma', 'file')
-        qsm_epi_prisma(path_mag, path_ph, path_out, options)
+        qsm_epi_prisma(path_mag, path_ph, path_out, options);
     else
         error("No QSM method was found");
-    end    
+    end
 end
 
